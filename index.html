@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script type="text/javascript">
+            function change()
+            {
+                document.getElementById("copy_btn").innerText="Copied";
+                setTimeout(function() { document.getElementById("copy_btn").innerText="Copy"; }, 2000)
+            }
+            </script>
+        <title>🔑 pwd</title>
+    </head>
+    <body>
+        <div class="flex flex-row grid grid-cols-1 lg:grid-cols-2 gap-4 my-20 w-3/4 md:max-w-[60%] m-auto">
+            <div id="app">
+                <div class="generate-pass bg-gray-50 px-5 py-5">
+                    <h1 class="leading-tight text-2xl mt-0 mb-2">GEN_a password</h1>
+                    <h2 class="text-xl">Simple password generator</h2>
+                    <div id="generated_pwd" class="pwd my-5 h-fit bg-blue-50 text-2xl w-fit font-medium tracking-wide leading-9" />
+                </div>
+                <div class="inputs grid flex-auto">
+                    <!-- <label for="uppercase" data-js-selector="checkbox">
+                        <input type="checkbox" id="uppercase" />
+                        Uppercase
+                    </label> -->
+                    <label for="numbers" data-js-selector="checkbox">
+                        <input type="checkbox" id="numbers" />
+                        Numbers
+                    </label>
+                    <label for="symbols" data-js-selector="checkbox">
+                        <input type="checkbox" id="symbols" />
+                        Symbols
+                    </label>
+                    <div class="input-group my-3">
+                        Password Length
+                        <div class="flex flex-row slider-container">
+                            <input type="range" min="4" max="24" value="12" data-js-selector="slider" class="m-auto slider w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-400" />
+                            <span class="value ml-3">12</span>
+                        </div>
+                    </div>
+                    <button data-js-selector="button" class="my-1 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">Generate Password</button>
+                    <button onclick="change()" data-js-selector="copy" id="copy_btn" class="my-1 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">Copy</button>
+                </div>
+            </div>
+            <script src="./app.js"></script>
+        </div>
+        <div class="grid flex">
+            <div>
+                <p class="text-justify">What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                </p>
+            </div>
+            <div>
+                <button class="my-1 h-10 bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded">Chrome Extension</button>
+                <button class="my-1 h-10 bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded">Tg bot</button>
+            </div>
+        </div>
+    </body>
+</html>
