@@ -1,3 +1,4 @@
+// TODO: remove numbers true
 const flags = {
     uppercase: false,
     numbers: false,
@@ -11,14 +12,37 @@ const selectors = {
     slider: 'slider',
     button: 'button',
     sliderValue: document.querySelector('.value'),
+
+    // TODO: change to 'pwd'
     input: document.querySelector('.pwd')
 }
 
+// wrap password string into span elements
+const spanWrap = () => {
+    $('.pwd').each(function (index) {
+        // var format = ['1', '2', '3', '4']
+        var format = '1234567890'
+        var characters = $(this).text().split("");
+        $this = $(this);
+        $this.empty();
+        $.each(characters, function (i, el) {
+            $this.append(`<span>` + el + `</span`);
+        });
+
+        characters.forEach((element) => {
+            if (format.includes(element)) {
+                console.log(`numbers: ${element}`)
+                $('h1').find(`span:contains(${element})`).css("color", "#3b82f6")
+            }
+        })
+    });
+}
+
 const generatePassword = () => {
-    // const defaultCharacters = 'abcdefghijklmnopqrstuvwxyz'
     let defaultCharacters = ''
     let defaultNumbers = ''
     let defaultSymbols = ''
+
     for( var i = 97; i <= 122; i++ ) {
       defaultCharacters += String.fromCharCode( i );
     }
@@ -28,38 +52,47 @@ const generatePassword = () => {
     for( var i = 33; i <= 47; i++ ) {
       defaultSymbols += String.fromCharCode( i );
     }
+
     const characters = {
         uppercase: defaultCharacters.toUpperCase(),
         numbers: defaultNumbers,
         symbols: defaultSymbols
     }
 
+    let nums = characters.numbers
+
     const characterList = [
         defaultCharacters,
-        // ...flags.uppercase ? characters.uppercase : [],
         characters.uppercase,
         ...flags.numbers ? characters.numbers : [],
         ...flags.symbols ? characters.symbols : []
     ].join('')
 
-    return Array.from({ length: flags.length }, () => Math.floor(Math.random() * characterList.length))
+    const pwd = Array.from({ length: flags.length }, () => Math.floor(Math.random() * characterList.length))
         .map(number => characterList[number])
-        .join('')
+
+    return pwd.join('')
+
+    // return Array.from({ length: flags.length }, () => Math.floor(Math.random() * characterList.length))
+    //     .map(number => characterList[number])
+    //     .join('')
 }
+
+window.onload = spanWrap
 
 document.querySelector('#app').addEventListener('click', event => {
     switch (event.target.dataset.jsSelector) {
-        // Event listener for copy
+        // copy button listener
         case selectors.copy:
             navigator.clipboard.writeText(selectors.input.textContent)
         break;
 
-        // Event listeners for checkboxes
+        // checkboxes listener
         case selectors.checkbox:
             flags[event.target.control.id] = !event.target.control.checked
         break;
 
-        // Event listeners for slider
+        // slider listener
         case selectors.slider:
             const value = event.target.valueAsNumber
 
@@ -67,15 +100,15 @@ document.querySelector('#app').addEventListener('click', event => {
             flags.length = value
         break;
 
-        // Event listener for generate button
+        // generate button listener
         case selectors.button:
             selectors.input.textContent = generatePassword()
+            spanWrap()
         break;
     }
 })
 
 document.addEventListener('readystatechange', event => { 
-    // When window loaded ( external resources are loaded too- `css`,`src`, etc...) 
     if (event.target.readyState === "complete") {
         selectors.input.textContent = generatePassword()
     }
