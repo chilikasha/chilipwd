@@ -17,11 +17,43 @@ const selectors = {
     input: document.querySelector('.pwd')
 }
 
+let defaultCharacters = ''
+let defaultNumbers = ''
+let defaultSymbols = ''
+
+// var returnString = function (charSet, start, end) {
+//     for( var i = start; i <= end; i++ ) {
+//       charSet += String.fromCharCode( i );
+//     }
+// }
+
+for( var i = 97; i <= 122; i++ ) {
+  defaultCharacters += String.fromCharCode( i );
+}
+
+for( var i = 48; i <= 57; i++ ) {
+  defaultNumbers += String.fromCharCode( i );
+}
+
+// symbols
+for( var i = 33; i <= 47; i++ ) {
+  defaultSymbols += String.fromCharCode( i );
+}
+for( var i = 58; i <= 64; i++ ) {
+  defaultSymbols += String.fromCharCode( i );
+}
+for( var i = 91; i <= 96; i++ ) {
+  defaultSymbols += String.fromCharCode( i );
+}
+for( var i = 123; i <= 126; i++ ) {
+  defaultSymbols += String.fromCharCode( i );
+}
+
 // wrap password string into span elements
 const spanWrap = () => {
     $('.pwd').each(function (index) {
-        // var format = ['1', '2', '3', '4']
-        var format = '1234567890'
+        var nums = defaultNumbers
+        var specials = defaultSymbols
         var characters = $(this).text().split("");
         $this = $(this);
         $this.empty();
@@ -30,28 +62,19 @@ const spanWrap = () => {
         });
 
         characters.forEach((element) => {
-            if (format.includes(element)) {
-                console.log(`numbers: ${element}`)
+            if (nums.includes(element)) {
                 $('h1').find(`span:contains(${element})`).css("color", "#3b82f6")
+            } else if (specials.includes(element)) {
+                $('h1').find(`span:contains('${element}')`).css("color", "#dc2626")
+                $('h1').find(`span:contains('\"')`).css("color", "#dc2626")
+                $('h1').find(`span:contains("\'")`).css("color", "#dc2626")
+                $('h1').find(`span:contains("\\")`).css("color", "#dc2626")
             }
         })
     });
 }
 
 const generatePassword = () => {
-    let defaultCharacters = ''
-    let defaultNumbers = ''
-    let defaultSymbols = ''
-
-    for( var i = 97; i <= 122; i++ ) {
-      defaultCharacters += String.fromCharCode( i );
-    }
-    for( var i = 48; i <= 57; i++ ) {
-      defaultNumbers += String.fromCharCode( i );
-    }
-    for( var i = 33; i <= 47; i++ ) {
-      defaultSymbols += String.fromCharCode( i );
-    }
 
     const characters = {
         uppercase: defaultCharacters.toUpperCase(),
