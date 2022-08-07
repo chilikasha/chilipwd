@@ -103,6 +103,17 @@ const generatePassword = () => {
 
 window.onload = spanWrap
 
+document.querySelector('#app').addEventListener('input', event => {
+    switch (event.target.dataset.jsSelector) {
+        // slider listener
+        case selectors.slider:
+            const value = event.target.valueAsNumber
+            selectors.sliderValue.innerText = value
+            flags.length = value
+        break;
+    }
+})
+
 document.querySelector('#app').addEventListener('click', event => {
     switch (event.target.dataset.jsSelector) {
         // copy button listener
@@ -113,14 +124,6 @@ document.querySelector('#app').addEventListener('click', event => {
         // checkboxes listener
         case selectors.checkbox:
             flags[event.target.control.id] = !event.target.control.checked
-        break;
-
-        // slider listener
-        case selectors.slider:
-            const value = event.target.valueAsNumber
-
-            selectors.sliderValue.innerText = value
-            flags.length = value
         break;
 
         // generate button listener

@@ -20,29 +20,29 @@
         <title>🔑 pwd</title>
     </head>
     <body>
-        <div class="flex flex-row grid my-10 w-3/4 md:max-w-[60%] m-auto">
+        <div class="flex flex-row grid my-10 max-w-[90%] md:max-w-[50%] m-auto">
             <h1 class="leading-tight text-2xl my-10 mb-2 text-center m-auto">🌶️ Chili pwd: a simple random password generator.</h1>
             <div id="app">
-                <div class="bg-gray-50 px-5 py-5 my-5 h-fit text-2xl text-center font-medium tracking-widest leading-9 rounded-full">
+                <div class="bg-gray-50 px-5 py-5 my-5 h-fit text-2xl text-center font-medium tracking-widest leading-9 rounded-lg break-all">
                     <h1 class="pwd" />
                 </div>
                 <div class="grid flex flex-row grid grid-cols-1 lg:grid-cols-2 gap-4">
-                    <button data-js-selector="button" class="my-1 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full">Generate Password</button>
-                    <button onclick="change()" data-js-selector="copy" id="copy_btn" class="my-1 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full">Copy</button>
+                    <button id="genBtn" data-js-selector="button" class="my-1 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg">Generate Password</button>
+                    <button onclick="change()" data-js-selector="copy" id="copy_btn" class="my-1 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg">Copy</button>
                 </div>
-                <div class="grid flex flex-row grid grid-cols-1 lg:grid-cols-2 gap-4 bg-gray-50 my-5">
-                    <div class="input-group flex flex-row my-3 justify-center">
-                        <div>
-                            <label class="mr-3 text-lg">Length:</label>
-                        </div>
-                        <div class="slider-container">
-                            <input type="range" min="4" max="24" value="12" data-js-selector="slider" class="m-auto slider h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-400" />
-                        </div>
-                        <span class="value ml-3 text-lg">12</span>
+                <div class="grid flex flex-row grid grid-cols-1 lg:grid-cols-2 gap-4 bg-gray-50 my-5 rounded-lg">
+                    <div class="input-group flex my-3 justify-center md:justify-end">
+                        <!-- <div class="flex-none"> -->
+                            <label class="mx-3 text-lg">Length:</label>
+                        <!-- </div> -->
+                        <!-- <div class="slider-container"> -->
+                            <input type="range" min="4" max="24" value="12" data-js-selector="slider" class=" my-auto slider h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" />
+                        <!-- </div> -->
+                        <span class="value mx-3 text-lg">12</span>
                     </div>
-                    <div class="inputs flex flex-row m-auto justify-center pb-1">
-                        <div class="flex mr-5">
-                            <label for="numbers" data-js-selector="checkbox" class="text-lg">
+                    <div class="inputs flex my-3 justify-start md:justify-start">
+                        <div class="mr-5 pb-3 lg:pb-0">
+                            <label for="numbers" data-js-selector="checkbox" class="mx-3 text-lg">
                                 <input type="checkbox" id="numbers" class="w-4 h-4"/>
                                 Numbers
                             </label>
