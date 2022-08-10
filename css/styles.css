@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  background: linear-gradient(<angle>, color1 color1-stop-at, color2 color2-start-at);
+}

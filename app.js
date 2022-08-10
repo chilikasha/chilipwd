@@ -12,7 +12,6 @@ const selectors = {
     slider: 'slider',
     button: 'button',
     sliderValue: document.querySelector('.value'),
-
     // TODO: change to 'pwd'
     input: document.querySelector('.pwd')
 }
@@ -20,12 +19,6 @@ const selectors = {
 let defaultCharacters = ''
 let defaultNumbers = ''
 let defaultSymbols = ''
-
-// var returnString = function (charSet, start, end) {
-//     for( var i = start; i <= end; i++ ) {
-//       charSet += String.fromCharCode( i );
-//     }
-// }
 
 for( var i = 97; i <= 122; i++ ) {
   defaultCharacters += String.fromCharCode( i );
@@ -63,12 +56,14 @@ const spanWrap = () => {
 
         characters.forEach((element) => {
             if (nums.includes(element)) {
-                $('h1').find(`span:contains(${element})`).css("color", "#3b82f6")
+                // $('h1').find(`span:contains(${element})`).css("color", "rgb(190 242 100)")
+                $('h1').find(`span:contains(${element})`).css("color", "rgb(101 163 13)")
             } else if (specials.includes(element)) {
-                $('h1').find(`span:contains('${element}')`).css("color", "#dc2626")
-                $('h1').find(`span:contains('\"')`).css("color", "#dc2626")
-                $('h1').find(`span:contains("\'")`).css("color", "#dc2626")
-                $('h1').find(`span:contains("\\")`).css("color", "#dc2626")
+                $('h1').find(`span:contains('${element}')`).css("color", "rgb(234 88 12)")
+                // $('h1').find(`span:contains('\"')`).css("color", "rgb(251 191 36)")
+                $('h1').find(`span:contains('\"')`).css("color", "rgb(234 88 12)")
+                $('h1').find(`span:contains("\'")`).css("color", "rgb(234 88 12)")
+                $('h1').find(`span:contains("\\")`).css("color", "rgb(234 88 12)")
             }
         })
     });
@@ -82,8 +77,6 @@ const generatePassword = () => {
         symbols: defaultSymbols
     }
 
-    let nums = characters.numbers
-
     const characterList = [
         defaultCharacters,
         characters.uppercase,
@@ -91,10 +84,30 @@ const generatePassword = () => {
         ...flags.symbols ? characters.symbols : []
     ].join('')
 
-    const pwd = Array.from({ length: flags.length }, () => Math.floor(Math.random() * characterList.length))
-        .map(number => characterList[number])
+    const numbersArray = defaultNumbers.split('')
+    const specialsArray = defaultSymbols.split('')
 
-    return pwd.join('')
+    let pwd
+    pwd = Array.from({ length: flags.length }, () => Math.floor(Math.random() * characterList.length))
+        .map(number => characterList[number])
+        .join('')
+
+    // console.log(flags.numbers)
+    if ((flags.numbers === true) && (numbersArray.some(v => pwd.includes(v)) === false)) {
+        console.log('no numbers!')
+        console.log(`original ${pwd}`)
+        pwd = pwd.replace(pwd.charAt(Math.floor(Math.random() * flags.length)), numbersArray[Math.floor(Math.random() * numbersArray.length)])
+        console.log(`new ${pwd}`)
+    } else if ((flags.symbols === true) && (specialsArray.some(v => pwd.includes(v)) === false)) {
+        console.log('no symbols!')
+        console.log(`original ${pwd}`)
+        pwd = pwd.replace(pwd.charAt(Math.floor(Math.random() * pwd.length)), specialsArray[Math.floor(Math.random() * specialsArray.length)])
+        console.log(`new ${pwd}`)
+    } else {
+        true
+    }
+
+    return pwd
 
     // return Array.from({ length: flags.length }, () => Math.floor(Math.random() * characterList.length))
     //     .map(number => characterList[number])
