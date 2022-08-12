@@ -56,8 +56,7 @@ const spanWrap = () => {
 
         characters.forEach((element) => {
             if (nums.includes(element)) {
-                // $('h1').find(`span:contains(${element})`).css("color", "rgb(190 242 100)")
-                $('h1').find(`span:contains(${element})`).css("color", "rgb(101 163 13)")
+                $('.pwd').find(`span:contains(${element})`).css("color", "#2563eb")
             } else if (specials.includes(element)) {
                 $('h1').find(`span:contains('${element}')`).css("color", "rgb(234 88 12)")
                 // $('h1').find(`span:contains('\"')`).css("color", "rgb(251 191 36)")
@@ -80,31 +79,58 @@ const generatePassword = () => {
     const characterList = [
         defaultCharacters,
         characters.uppercase,
+        // characters.numbers,
+        // characters.symbols,
         ...flags.numbers ? characters.numbers : [],
         ...flags.symbols ? characters.symbols : []
     ].join('')
 
+    const charsArray = defaultCharacters.split('')
+    const charsUppercaseArray = characters.uppercase.split('')
+    const allCharsArray = charsArray.concat(charsUppercaseArray)
+
     const numbersArray = defaultNumbers.split('')
     const specialsArray = defaultSymbols.split('')
 
-    let pwd
-    pwd = Array.from({ length: flags.length }, () => Math.floor(Math.random() * characterList.length))
+    function gen() {
+        return Array.from({ length: flags.length }, () => Math.floor(Math.random() * characterList.length))
         .map(number => characterList[number])
         .join('')
+    }
 
-    // console.log(flags.numbers)
-    if ((flags.numbers === true) && (numbersArray.some(v => pwd.includes(v)) === false)) {
-        console.log('no numbers!')
-        console.log(`original ${pwd}`)
-        pwd = pwd.replace(pwd.charAt(Math.floor(Math.random() * flags.length)), numbersArray[Math.floor(Math.random() * numbersArray.length)])
-        console.log(`new ${pwd}`)
-    } else if ((flags.symbols === true) && (specialsArray.some(v => pwd.includes(v)) === false)) {
-        console.log('no symbols!')
-        console.log(`original ${pwd}`)
-        pwd = pwd.replace(pwd.charAt(Math.floor(Math.random() * pwd.length)), specialsArray[Math.floor(Math.random() * specialsArray.length)])
-        console.log(`new ${pwd}`)
-    } else {
-        true
+    let pwd
+    pwd = gen()
+
+    if ((flags.numbers === true) && (flags.symbols === false)) {
+        while (numbersArray.some(v => pwd.includes(v)) === false) {
+            console.log('oh shit')
+            pwd = gen()
+            if ((numbersArray.some(v => pwd.includes(v)) === true) && (allCharsArray.some(v => pwd.includes(v)) === true)) {
+                break
+            }
+        }
+    }
+
+    if ((flags.symbols === true) && (flags.numbers === false)) {
+        while (specialsArray.some(v => pwd.includes(v)) === false) {
+            console.log('oh shit 2')
+            console.log(`initial pwd: ${pwd}`)
+            pwd = gen()
+            console.log(`new pwd: ${pwd}`)
+            if ((specialsArray.some(v => pwd.includes(v)) === true) && (allCharsArray.some(v => pwd.includes(v)) === true)) {
+                break
+            }
+        }
+    }
+
+    if ((flags.numbers === true) && (flags.symbols === true)) {
+        while ((allCharsArray.some(v => pwd.includes(v)) === false) || (specialsArray.some(v => pwd.includes(v)) === false) || (numbersArray.some(v => pwd.includes(v)) === false)) {
+            console.log('oh shit 3')
+            pwd = gen()
+            if ((allCharsArray.some(v => pwd.includes(v)) === true) && (specialsArray.some(v => pwd.includes(v)) === true) && (numbersArray.some(v => pwd.includes(v)) === true)) {
+                break
+            }
+        }
     }
 
     return pwd
@@ -149,6 +175,9 @@ document.querySelector('#app').addEventListener('click', event => {
 
 document.addEventListener('readystatechange', event => { 
     if (event.target.readyState === "complete") {
+        $(':checkbox:checked').prop('checked',false);
         selectors.input.textContent = generatePassword()
     }
 });
+
+// document.querySelector('.input-group').reset();
