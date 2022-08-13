@@ -21,16 +21,24 @@
                 setTimeout(function() { document.getElementById("copy_btn").innerText="Copy"; }, 2000)
             }
         </script>
+        <!-- Panelbear -->
+        <script async src="https://cdn.panelbear.com/analytics.js?site=53EfRMYHsss">
+        </script>
+        <script>
+            window.panelbear = window.panelbear || function() { (window.panelbear.q = window.panelbear.q || []).push(arguments); };
+            panelbear('config', { site: '53EfRMYHsss'});
+            // panelbear('config', { site: '53EfRMYHsss', debug: true });
+        </script>
         <title>🌶️ Chili pwd</title>
     </head>
     <body class="">
         <div class="flex flex-col sm:flex-row justify-center">
-            <div class="sm:basis-1/2 self-center justify-center max-w-sm pt-10 sm:mt-20 w-full sm:bg-gray-50 rounded-lg ">
+            <div class="max-w-sm pt-10 sm:mt-20 w-full sm:bg-gray-50 rounded-lg sm:pb-10">
                 <h1 class="text-4xl sm:mt-5 mb-2 text-center tracking-wide font-bold">🌶️ Chili pwd</h1>
                 <h2 class="text-lg my-3 mb-2 mx-3 text-center font-semibold">a simple password generator</h2>
                 <div id="app" class="">
-                    <div class="bg-white mx-3 px-5 py-5 my-5 text-2xl text-center font-bold leading-9 rounded-lg break-all font-mono">
-                        <h1 class="pwd leading-tight"/>
+                    <div class="bg-white mx-3 px-5 py-5 my-5 text-2xl text-center font-bold leading-9 rounded-lg break-all font-mono border-black border-solid border rounded-lg border-gray-400 border-dashed p-2 sm:border-0">
+                        <p class="pwd leading-tight"/>
                     </div>
                     <div class="mx-3 mt-5">
                         <div class="input-group flex my-3 justify-center bg-gray-100 py-3 rounded-lg">
@@ -59,7 +67,7 @@
                     </div>
                 </div>
             </div>
-            <div class="sm:basis-1/4 my-5 sm:my-20 sm:ml-5 sm:pt-10 self-center sm:self-start pb-20">
+            <div class=" my-5 sm:my-20 sm:ml-5 sm:pt-10 self-center sm:self-start pb-10">
                 <h1 class="text-4xl sm:my-5">Open source</h1>
                 <h1 class="text-2xl mt-3 text-gray-400">Chrome extension</h1>
                 <p class="text-sm text-gray-400">soon... maybe</p>
@@ -67,21 +75,27 @@
                 <p class="text-sm text-gray-400">soon... maybe</p>
                 <h1 class="text-2xl mt-3 text-gray-400">Keyboard shortcuts</h1>
                 <p class="text-sm text-gray-400">soon</p>
-                <div class="bg-yellow-100 max-w-fit rounded-lg font-mono">
+                <!-- <div class="bg-yellow-100 max-w-fit rounded-lg font-mono">
                     <h1 class="text-md px-2 my-3 text-gray-400">g - generate</h1>
                 </div>
                 <div class="bg-yellow-100 max-w-fit rounded-lg font-mono">
                     <h1 class="text-md px-2 bg-orange my-3 text-gray-400">c - copy</h1>
-                </div>
+                </div> -->
             </div>
             <script src="./app.js"></script>
         </div>
         <footer class="flex">
             <div class="w-full h-12 bg-gray-100 border-t-2 border-white fixed left-0 bottom-0 flex justify-center items-center text-md sm:text-lg">
                 <div class="flex sm:flex-row">
-                    <div class="mr-3">twitter</div>
-                    <div class="mr-3">github</div>
-                    <div class="">tinytools</div>
+                    <div class="mr-3">
+                        <a href="https://twitter.com/chilikasha" rel="noopener noreferrer" target="_blank">twitter</a>
+                    </div>
+                    <div class="mr-3 text-gray-400">github
+                        <!-- <a href="" rel="noopener noreferrer" target="_blank">github</a> -->
+                    </div>
+                    <div class="">
+                        <a href="https://tinytools.club" rel="noopener noreferrer" target="_blank">tinytools</a>
+                    </div>
                 </div>
             </div>
             </footer>

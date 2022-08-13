@@ -58,11 +58,10 @@ const spanWrap = () => {
             if (nums.includes(element)) {
                 $('.pwd').find(`span:contains(${element})`).css("color", "#2563eb")
             } else if (specials.includes(element)) {
-                $('h1').find(`span:contains('${element}')`).css("color", "rgb(234 88 12)")
-                // $('h1').find(`span:contains('\"')`).css("color", "rgb(251 191 36)")
-                $('h1').find(`span:contains('\"')`).css("color", "rgb(234 88 12)")
-                $('h1').find(`span:contains("\'")`).css("color", "rgb(234 88 12)")
-                $('h1').find(`span:contains("\\")`).css("color", "rgb(234 88 12)")
+                $('.pwd').find(`span:contains('${element}')`).css("color", "rgb(234 88 12)")
+                $('.pwd').find(`span:contains('\"')`).css("color", "rgb(234 88 12)")
+                $('.pwd').find(`span:contains("\'")`).css("color", "rgb(234 88 12)")
+                $('.pwd').find(`span:contains("\\")`).css("color", "rgb(234 88 12)")
             }
         })
     });
@@ -103,7 +102,7 @@ const generatePassword = () => {
 
     if ((flags.numbers === true) && (flags.symbols === false)) {
         while (numbersArray.some(v => pwd.includes(v)) === false) {
-            console.log('oh shit')
+            // console.log('oh shit')
             pwd = gen()
             if ((numbersArray.some(v => pwd.includes(v)) === true) && (allCharsArray.some(v => pwd.includes(v)) === true)) {
                 break
@@ -113,10 +112,10 @@ const generatePassword = () => {
 
     if ((flags.symbols === true) && (flags.numbers === false)) {
         while (specialsArray.some(v => pwd.includes(v)) === false) {
-            console.log('oh shit 2')
-            console.log(`initial pwd: ${pwd}`)
+            // console.log('oh shit 2')
+            // console.log(`initial pwd: ${pwd}`)
             pwd = gen()
-            console.log(`new pwd: ${pwd}`)
+            // console.log(`new pwd: ${pwd}`)
             if ((specialsArray.some(v => pwd.includes(v)) === true) && (allCharsArray.some(v => pwd.includes(v)) === true)) {
                 break
             }
@@ -125,7 +124,7 @@ const generatePassword = () => {
 
     if ((flags.numbers === true) && (flags.symbols === true)) {
         while ((allCharsArray.some(v => pwd.includes(v)) === false) || (specialsArray.some(v => pwd.includes(v)) === false) || (numbersArray.some(v => pwd.includes(v)) === false)) {
-            console.log('oh shit 3')
+            // console.log('oh shit 3')
             pwd = gen()
             if ((allCharsArray.some(v => pwd.includes(v)) === true) && (specialsArray.some(v => pwd.includes(v)) === true) && (numbersArray.some(v => pwd.includes(v)) === true)) {
                 break
@@ -179,5 +178,3 @@ document.addEventListener('readystatechange', event => {
         selectors.input.textContent = generatePassword()
     }
 });
-
-// document.querySelector('.input-group').reset();
