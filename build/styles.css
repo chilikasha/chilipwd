@@ -879,6 +879,10 @@ body {
 }
 
 @media (min-width: 640px) {
+  .sm\:fixed {
+    position: fixed;
+  }
+
   .sm\:my-20 {
     margin-top: 5rem;
     margin-bottom: 5rem;
