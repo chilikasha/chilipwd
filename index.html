@@ -54,7 +54,7 @@
         <h2 class="text-lg my-3 mb-2 mx-3 text-center font-semibold">
           a simple password generator
         </h2>
-        <div id="app" class="">
+        <div id="app">
           <div
             class="bg-white mx-3 px-5 py-5 my-5 text-2xl text-center font-bold leading-9 rounded-lg break-all font-mono border-black border-solid border rounded-lg border-gray-400 dark:bg-neutral-200 border-dashed p-2 sm:border-0 dark:border-0 text-black"
           >
@@ -90,7 +90,7 @@
                 <input
                   type="checkbox"
                   id="numbers"
-                  class="w-5 h-5 ml-2 mr-1 mb-1 mt-1"
+                  class="w-5 h-5 ml-2 mr-1 mb-1 mt-1 pointer-events-none"
                 />
                 Numbers
               </label>
@@ -106,7 +106,7 @@
                 <input
                   type="checkbox"
                   id="symbols"
-                  class="w-5 h-5 ml-2 mr-1 mb-1 mt-1"
+                  class="w-5 h-5 ml-2 mr-1 mb-1 mt-1 pointer-events-none"
                 />
                 Symbols
               </label>
@@ -151,7 +151,6 @@
           <h1 class="text-md px-2 bg-orange my-3">c - copy</h1>
         </div>
       </div>
-      <script src="./app.js"></script>
     </div>
     <footer class="flex">
       <div
@@ -185,5 +184,6 @@
         </div>
       </div>
     </footer>
+    <script src="./app.js"></script>
   </body>
 </html>
