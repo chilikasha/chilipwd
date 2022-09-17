@@ -63,6 +63,7 @@ const spanWrap = () => {
           .css('color', 'rgb(234 88 12)')
         $('.pwd').find(`span:contains('\"')`).css('color', 'rgb(234 88 12)')
         $('.pwd').find(`span:contains("\'")`).css('color', 'rgb(234 88 12)')
+        // TODO: fix
         $('.pwd').find(`span:contains("\\")`).css('color', 'rgb(234 88 12)')
       }
     })
@@ -79,8 +80,6 @@ const generatePassword = () => {
   const characterList = [
     defaultCharacters,
     characters.uppercase,
-    // characters.numbers,
-    // characters.symbols,
     ...(flags.numbers ? characters.numbers : []),
     ...(flags.symbols ? characters.symbols : []),
   ].join('')
@@ -150,12 +149,9 @@ const generatePassword = () => {
   }
 
   return pwd
-
-  // return Array.from({ length: flags.length }, () => Math.floor(Math.random() * characterList.length))
-  //     .map(number => characterList[number])
-  //     .join('')
 }
 
+// TODO: ?
 window.onload = spanWrap
 
 document.querySelector('#app').addEventListener('input', (event) => {
@@ -198,6 +194,7 @@ document.addEventListener('readystatechange', (event) => {
 
 document.addEventListener('keydown', (event) => {
   if (event.key.toLowerCase() === 'g') {
+    event.preventDefault()
     selectors.input.textContent = generatePassword()
     spanWrap()
   } else if (event.key.toLowerCase() === 'c') {

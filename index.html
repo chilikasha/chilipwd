@@ -11,7 +11,6 @@
       content="Chili pwd - simple password generator"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <meta http-equiv="Cache-control" content="no-cache" /> -->
     <link rel="stylesheet" href="build/styles.css" />
     <script
       src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -44,9 +43,9 @@
     <title>Chili pwd</title>
   </head>
   <body class="dark:bg-neutral-900 dark:text-zinc-300">
-    <div class="flex flex-col sm:flex-row justify-center">
+    <div class="flex flex-col sm:flex-row justify-center h-screen">
       <div
-        class="max-w-sm self-center pt-10 sm:mt-20 w-full sm:bg-gray-50 rounded-lg sm:pb-10 sm:dark:bg-neutral-800"
+        class="max-w-sm self-center pt-4 w-full sm:bg-gray-50 rounded-lg sm:pb-10 sm:dark:bg-neutral-800"
       >
         <h1 class="text-4xl sm:mt-5 mb-2 text-center tracking-wide font-bold">
           🌶️ Chili pwd
@@ -129,42 +128,17 @@
               Copy
             </button>
           </div>
-        </div>
-      </div>
-      <div
-        class="my-5 sm:my-20 sm:ml-5 sm:pt-10 self-center sm:self-start pb-10"
-      >
-        <h1 class="text-4xl sm:my-5">Open source</h1>
-        <h1 class="text-2xl mt-3 text-gray-400">Chrome extension</h1>
-        <p class="text-sm text-gray-400">soon... maybe</p>
-        <h1 class="text-2xl mt-3 text-gray-400">Telegram bot</h1>
-        <p class="text-sm text-gray-400">soon... maybe</p>
-        <h1 class="text-2xl mt-3">Keyboard shortcuts:</h1>
-        <div
-          class="bg-gray-100 dark:bg-neutral-700 max-w-fit rounded-lg font-mono"
-        >
-          <h1 class="text-md px-2 my-3">g - generate</h1>
-        </div>
-        <div
-          class="bg-gray-100 dark:bg-neutral-700 max-w-fit rounded-lg font-mono"
-        >
-          <h1 class="text-md px-2 bg-orange my-3">c - copy</h1>
+          <div class="flex-col grid pb-4">
+            <h1 class="text-sm mt-3 px-4 text-center">Keyboard shortcuts: g - generate, c - copy</h1>
+          </div>
         </div>
       </div>
     </div>
-    <footer class="flex">
+    <footer class="flex mb-auto">
       <div
         class="w-full h-12 bg-gray-100 dark:bg-neutral-700 border-white sm:fixed left-0 bottom-0 flex justify-center items-center text-md sm:text-lg"
       >
         <div class="flex sm:flex-row">
-          <div class="mr-3">
-            <a
-              href="https://twitter.com/chilikasha"
-              rel="noopener noreferrer"
-              target="_blank"
-              >twitter</a
-            >
-          </div>
           <div class="mr-3">
             <a
               href="https://github.com/chilikasha/chilipwd"
