@@ -7,4 +7,4 @@ A simple password generator.
 - [x] auto dark theme
 - [x] keyboard shortcuts
 
-Please open a bug or PR in case of issues, since the code may be rather shitty.
+Please open a bug or PR in case of issues, since the code ~~may be~~ is rather shitty.
